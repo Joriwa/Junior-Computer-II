@@ -23,7 +23,7 @@ The Junior Computer ][ was born.
 
 For now the Junior Computer ][ has evolved in various stages and some additional hardware was developed for it.
 
-The computer it self has up to 128K of memory. The IO-/Language card offers you a real time clock, additional parallel IO ports, 
+The computer it self has up to 128KB of memory. The IO-/Language card offers you a real time clock, additional parallel IO ports, 
 an I2C interface, a parallel printer port, a connector for an ASCII keyboard and a Commodore Datasette drive, a 76489 sound chip, a SD-Card slot and the ability 
 to program in BASIC using the EhBASIC interpreter from, the to early past away, Lee Davidson.
 
