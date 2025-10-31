@@ -1,0 +1,196 @@
+Junior Computer ][ ROM Version History
+======================================
+
+Version 1.1.7
+-------------
+
+- Added TTY_OUT driver routine that handles right and up cursor ESC codes in the TTY driver.
+  (code by Dietrich Lausberg)
+
+Version 1.1.6
+-------------
+
+- Fixed an error in the interrupt service routine initializtation (INITVECT) for the initial BRKUSR 
+  and IRQUSR routine hooks.
+
+Version 1.1.5
+-------------
+
+- Skipped due to an inadvertently inserted bug (no comment).
+  :(
+
+Version 1.1.4
+------------
+
+- All new Card detection routines.
+- Minor bug fixes.
+
+
+Version 1.1.3
+-------------
+
+- Changed some ZP addresses to hopefully not colide with CPM-65 and EhBASIC...
+
+Version 1.1.2
+-------------
+
+- Deleted 2x2ms Delay in SOUND_SENDBYTE routine.
+- Support for 8 Bit ASCII Codes in PS2 Keyboard Driver routine.
+- Fixed API entry points for SOUND routines.
+
+Version 1.1.1
+-------------
+
+- Included Floppy-/Graphics-Card detection and initialization routine.
+- Included Driver routine for Joystick Port.
+- Included Driver routine for PS/2 Keyboard.
+- Minor changes in Main IRQ routine for more compatibility with CPM-65.
+- Added Monitor Return Vector in address $0000/$0001 used with command Q (for example return to M/OS-65 Operating System).
+- Changes in SD_WR_BLK and SD_RD_BLK routines by Dietrich Lausenberg for faster SD-Card Read and Write.
+
+Version 1.1.0
+-------------
+
+- Fixed a bug in SD_WR_BLK. The bug was found by German Classic Computing forum user Dietrich Lausberg. The response 
+  byte was not read correctly after a write cycle, which also prevented the busy-waiting loop from executing correctly.
+- Added new driver commands CMD_READ_BUF and CMD_WRITE_BUF.
+- Fixed a bug in SYS_LD_BOOTBLK. The routine now uses the driver CMD routine instead of a SD_RD_LBLK_BUF call.
+- Added support for MBR boot menus. 
+
+Version 1.0.5
+-------------
+
+- Fixed a bug in LOAD_LBA. The lowest byte of the result address was not initialized if SD_TYPE was in BITMODE ($00).
+- Boot Parameter Block is now moved to $400..$41F. Former start and length of boot partition at $05F8 is now no longer valid.
+- SD_TYPE variable is moved from $EE to $1A to support CPM-65 from Dietrich Lausberg.
+
+Version 1.0.4
+-------------
+
+- Fixed a bug in the XModem code. After setting the STDIN device from ASCII-Keyboard to TTY1, XModem crashed
+  in the ReadByte routine.
+- Fixed a bug in SYS_BOOT. Start and length of the boot partition is now saved to memory location $05F8 by the 
+  boot routine.
+- Fixed a bug in SYS_BOOT. BCS ($B0) op-code is no longer assumed to read from disk. Its now written to memory 
+  location $0600 after the boot block is read. Because changing one of the first three bytes in the boot block 
+  prevents windows from reading the disk (error -> disk not formated).
+
+Version 1.0.3
+-------------
+
+- Fixed a bug in the disassembler code found by German Classic Computing forum user jet2bue.
+  The opcodes $96 and $B6 were decoded to STX ADR,X and LDX ADR,X. 
+  This is now corrected to STX ADR,Y and LDX ADR,Y. 
+- Added SPI support
+- Added SD-Card support
+- Added boot device driver for SD-Card, Floppy and Harddisk drives
+- Drivers can now be dynamically added to the driver list 
+
+Version 1.0.2
+-------------
+
+- Support for Junior Computer ][ ASCII-Keyboard
+- Fixed some errors in tape read/write routines caused by driver support changes (Version 1.0.1)
+- Added patch to disable automatic baud rate detection (see hardware patch info)
+
+Version 1.0.1
+-------------
+
+- Packed and somewhere optimized code.
+- Includes a new and more flexible hardware driver support.
+- Reordered basic system calls, so no moving of old code is necessary any longer ;)
+- A list of basic BIOS system routines is now available.
+- Changed Magic Number for language card detection. You need EhBasic 2.23 to run with this BIOS Version. 
+
+Version 1.0
+-----------
+
+- Support for reading and writing to tape.
+
+Version 0.9
+-----------
+
+- Autodetect for Junior Computer ][ IO/Language Card.
+- Autodetect for installed programming language on IO/Language Card.
+- I2C driver for IO/Language Card.
+- Real Time Clock driver for IO/Language Card (not optimized - will be changed in previous versions)
+- Included 'Set Date and Time' at home screen if RTC not initialized.
+- Included printing of actual date and time at home screen.
+- Included text Inverse, Flash and Normal mode.
+- Optimized SETSTDIN and SETSTDOUT functions.
+- Included more standard IO function calls.
+- Fixed EhBasic warm start problem by moving some zero page variables to other locations.
+- Fixed 7-segment display problem whith installed IO/Language Card after switching into the original monitor program. 
+
+
+Version 0.8
+-----------
+
+- Included parallel port driver for printing on a standard parallel port printer (Epson FX80, Commodore MPS1230, ...).
+- Added SETSTDOUT and SETSTDIN routines, to switch COUT, BOUT, CIN and CGET functions to different 
+  input/output devices. Available Devices are: STDTTY (0) = Terminal and STDPPORT (1) = Printer.
+- Added command P (print) to output a disassembler listing and PD (print dump) to output a hex dump to
+  a connected parallel port printer.
+- Disassembler listings are now no longer just one screen page long. Now, you can choose the start and end address
+  of a disassemble listing. A listing can be interrupted by pressing the ESC key. 
+
+Version 0.7
+-----------
+
+- ROM code start moved from F800 to E000.
+- All new hex monitor command parser. Removed old extra command parser which was used for data exchange commands.
+- Commands LM, SM for load/save via modem.
+- Commands LP, SP for load/save via parallel port and LT, ST for load/save via tape are included, 
+  but without any function (coming soon).
+- Size reduced all new Disassembler.
+- Processor status is shown if BRK opcode is executed or ST (NMI) key is pressed.
+- Start address of data loaded via XModem is remembered, so a immediately following single G(o) command 
+  can directly execute a loaded program code.
+
+Version 0.6
+-----------
+
+- New command M(onitor) jumps to the original Junior Computer Monitor.
+- Now includes a Disassembler which can be called by command L(ist).
+
+Version 0.5
+-----------
+
+- Removed Interrupt driven receive, because of hanging of the Monitor if any key is pressed while
+  a hex listing is send to the terminal. All character input routines are now polled versions.
+- Simplified baud rate detection.
+- Hex listing can now be interrupted by ESC key.
+- Routines executed by the Monitor G(o) command can now return to the Monitor prompt by executing an RTS opcode.
+- Saved of over 200 bytes by general source code optimization. 
+- XMODEM buffer moved to $1500, which lies in the ACIA I/O and memory space.
+
+Version 0.4
+-----------
+
+- Port of Daryl Rictor's 6502 XMODEM/CRC protocol implementation.
+- Extended Monitor parser to support the XMODEM capabilities. 
+- System Beep routine.
+- Actual version is shown on welcome screen.
+- Junior is beeping after powering up and hardware reset.
+
+Version 0.3
+-----------
+
+- Simple timer controlled Delay routine.
+- Auto baudrate detection of connected terminal. If no terminal connected, original Junior is executed.
+- Fixed some ASCII view display issues.
+
+Version 0.2
+-----------
+
+- Extended hex monitor view with two rows by eight bytes hex and one row ASCII view.
+- Auto start for Print Monitor after power on and reset 
+
+Version 0.1
+-----------
+
+- Port of Stephan Wozniaks Apple 1 Hex Monitor.
+- Interrupt driven serial receive with 6551 ACIA.
+- Serial transmition with fixed 9600 bauds, 8 bits, no parity, one stopbit.
+- Character read/write routines.
+- Welcome screen with simple menu.
