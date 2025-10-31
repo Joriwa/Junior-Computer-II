@@ -8,7 +8,7 @@ The Junior was a little Single-Board-Computer in the style of the MOS/Commodore 
 It featured a hex keyboard and a seven segment display, 1KB RAM and 1KB ROM with the so called Print Monitor.
 The Computer was driven by the MOS 6502 CPU with clock speed of a 1MHz. The peripheral IC 6532, a so-called RIOT (RAM/IO/Timer), was used for input and output.
 All in all, the Junior Computer was a nice little tool that gave ambitious hobby electronics enthusiasts access to programming the 
-6502 CPU and enabled them to take their first steps in world of computer-controlled electronics. 
+6502 CPU and enabled them to take their first steps in the world of computer-controlled electronics. 
 For many people in the 1980s, the Elektor Junior Computer was the Arduino of its time.
 
 I never had one of those wonderful little machines, but I always wanted one...
