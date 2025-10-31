@@ -1,4 +1,5 @@
 # JuniorComputer ][ (JC2)
+
 Junior Computer ][ Hardware and Software
 
 # Some History
