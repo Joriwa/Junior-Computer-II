@@ -17,4 +17,4 @@ The new monitor program for the JC2 was build uppon Steve Wozniak's Apple 1 moni
 To load and save programs and data from a via RS232 connected PC to the Junior Computer's memory, I use the XModem implementation of Daryl Rictor from 2002. This uses CRC checking of the transmitted data.
 In order to use CRC checking in TeraTerm, you have to modify the TeraTerm.ini file as described in the TeraTerm README.
 
-You can make your own 3D printed cover for the 7 segment display using the JuniorLEDCover.stl file. 
+Finally, you can make your own 3D printed cover for the 7 segment display using the JuniorLEDCover.stl file. 
