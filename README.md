@@ -20,6 +20,8 @@ So I gave it a whopping 32 KB of RAM, 8 KB of ROM with an extended print monitor
 
 The Junior Computer ][ was born. 
 
+![Board Top](./Junior Computer 2/Images/JC2_1.jpg)
+
 # The Project
 
 For now the Junior Computer ][ has evolved in various stages and some additional hardware was developed for it.
