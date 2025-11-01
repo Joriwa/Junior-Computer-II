@@ -4,7 +4,9 @@
 
 Although the ASCII keyboard was developed specifically for the JC2, it can also be used with any other retro-style computer that can be connected to an ASCII keyboard.
 
-Set jumper pair P0/P1 to select desired keyboard language layout
+Please refer to the Assembly Instruction.pdf file to find more about the connector pinout and special key strokes such as CTRL-SHIFT-DEL for a reset.
+
+Set jumper pair P0/P1 to select desired keyboard language layout.
 
 
 P0      | P1      | Keyboard Layout
