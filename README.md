@@ -20,7 +20,7 @@ So I gave it a whopping 32 KB of RAM, 8 KB of ROM with an extended print monitor
 
 The Junior Computer ][ was born. 
 
-![Board Top](./Junior Computer 2/Images/JC2_1.jpg)
+![Board Top](./Images/JC2_Top.jpg)
 
 # The Project
 
