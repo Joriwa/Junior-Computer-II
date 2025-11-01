@@ -1,6 +1,6 @@
 # ASCII Keyboard
 
-![Image top]()
+![Image top](/Images/ASCI_Keyboard.jpg)
 
 Although the ASCII keyboard was developed specifically for the JC2, it can also be used with any other retro-style computer that can be connected to an ASCII keyboard.
 
