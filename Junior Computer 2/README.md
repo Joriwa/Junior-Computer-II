@@ -8,7 +8,7 @@ The JC2 extends the address decoders of the Junior in the way to enable the use 
 
 With a 628128 RAM the JC2 can directly access 51712 bytes of free memory. The upper 64KB could be used via the 128K_SEL line on the expansion bus with some additional electronics. However, it's not currently used. 
 
-A 6551 UART makes it possible to communitate with the JC2 via a VT100 compatible terminal or a terminal emulation such as TeraTerm, qTerm or PuTTY. The JC2 BIOS attempts to determine the baud rate used by the terminal by sending the “Send-ID” command at various baud rates until it receives a response from the connected terminal. If no response is received, JC2 uses 9600 baud, 8 bits, no parity on the COM port. You can use a little hardware patch to disable the auto baud rate detection, as described in "Hardware Patch.pdf".
+A 6551 UART makes it possible to communitate with the JC2 via a VT100 compatible terminal or a terminal emulation such as TeraTerm, qTerm or PuTTY. The JC2 BIOS attempts to determine the baud rate used by the terminal by sending the “Send-ID” command at various baud rates until it receives a response from the connected terminal. If no response is received, JC2 uses 9600 baud, 8 bits, no parity on the COM port. You can use a little hardware patch to disable the auto baud rate detection, as described in "Hardware Patch.pdf". This patch sets the transmission rate to 19200 baud, 8 bits, no parity.
 
 The Junior Computer ][ can be expanded with additional hardware via the 64-pin expansion bus, which is pin-compatible with the original bus interface of the Elektor Junior Computer. Therefore, old hardware expansions should also work with the JC2 but there is no guarantee that all old cards will work.
 
