@@ -32,7 +32,7 @@ to program in BASIC using the EhBASIC interpreter from, the to early past away, 
 
 The Floppy-/Graphics-Controller, which is still under development, also offers you a PS/2 keyboard connection, a joystick port, a composite and RGB monitor output, and a floppy disk drive interface.
 
-An retro style ASCII keyboard, specially developed for the Junior Computer, is also available.
+A retro style ASCII keyboard, specially developed for the Junior Computer, is also available.
 
 There is a fork from [Emile](https://github.com/Emile666/JC2) which offers some very interesting extra features.
 
