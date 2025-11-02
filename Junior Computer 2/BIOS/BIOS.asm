@@ -1,11 +1,11 @@
 ;{ASSEMBLER=A65}
 
 ; ******************************************************************************
-; Junior Computer ][ BIOS Version 1.1.6
+; Junior Computer ][ BIOS Version 1.1.7
 ; by Joerg Walke
 ;
 ; first implementation 28.12.2021
-; updated 24.10.2025
+; updated 30.10.2025
 ; by Joerg Walke
 ;
 ; Assembled With A65
@@ -33,7 +33,7 @@
 
 VERMAIN   	EQU     '1'    		; BIOS main version
 VERPSUB    	EQU     '1'    		; BIOS primary sub version
-VERSSUB		EQU	'6'		; BIOS secondary sub version
+VERSSUB		EQU	'7'		; BIOS secondary sub version
 
 RETURN_VECT     EQU     $0001           ; return vector to monitor caller
 RESET     	EQU  	$1C1D       	; original junior monitor reset vector
@@ -1683,7 +1683,7 @@ INITVECT        LDX	#LOW  NMI	; set NMI service routine
 		LDY	#HIGH IRQ
 		JSR     SETIRQVECT      ; set IRQ service routine
 		LDX	#LOW  NMI	; set standard IRQ and BRK user service routines
-		LDY	#HIGH NMI
+		LDY	#HIGH NMI       ; to same as NMI. May change in the future
 		STX	BRKUSR
                 STY	BRKUSR+1
                 STX	IRQUSR
@@ -3717,7 +3717,7 @@ IRQ		STA	STOACC		; save current accumulator
 		AND	#$10		; mask break flag
 		BNE	USRBREAK	; if break flag set, jump to user break handler
 		LDA	STOACC
-		JMP	(IRQUSR)	; else jump to clock IRQ routine
+		JMP	(IRQUSR)	; else jump to user IRQ routine
 
 USRBREAK	LDA	STOACC
 		JMP	(BRKUSR)
@@ -3760,6 +3760,23 @@ MAGICLOOP	LDA	MAGIC0-1,X
 		BNE	MAGICLOOP
 NOMAGIC		TXA
 NOSTDPROC	RTS
+
+; **** Write To TTY Routine *************************************************
+;
+; Input: A - Output Byte to RS232 handles $15 - CUR right, $0B - CUR up
+;
+; ******************************************************************************
+
+TTY_OUT         CMP     #$0B            ; VT sent?
+                BNE     TTY_OUT1
+                LDA     #ESC            ; send ESC M
+                JSR     SERIALOUT
+                LDA     #'M'
+                BNE     SERIALOUT       ; branch always
+TTY_OUT1        CMP     #$15            ; HT sent?
+                BNE     SERIALOUT
+                JSR     TTY_ESCCODE     ; send ESC ] C
+                LDA     #'C'            ; fall through to SERIALOUT
 
 ; **** Write To Serial Routine *************************************************
 
@@ -4789,25 +4806,24 @@ _HANDLER_       RTS
 FGC_FDC_CMD2    ORA     #$80            ; set bit 7 of command byte (drive 2 operation)
                 JMP     FGC_FDC_CMD     ; call command handler
 
-
 ; **** Floppy IRQ Routine ******************************************************
 
 ; ******************************************************************************
                 ORG     $F948
 
 MOTOR_IRQ       PHA
-                LDA     FDC_OPT_REG     ; load option register
-                AND     $04             ; watch dog interrupt pending?
-                BEQ     VPU_IRQ         ; no, check VPU IRQ
-                LDA     FDC_MOTOR1_REG  ; yes, clear interrupts
-                LDA     FDC_MOTOR2_REG  ; by reading the motor registers
+                ;LDA     FDC_OPT_REG     ; load option register
+                ;AND     $04             ; watch dog interrupt pending?
+                ;BEQ     VPU_IRQ         ; no, check VPU IRQ
+                ;LDA     FDC_MOTOR1_REG  ; yes, clear interrupts
+                ;LDA     FDC_MOTOR2_REG  ; by reading the motor registers
 
-                LDA     #$0C
-                STA     FDC_OPT_REG     ; all motors off
-                LDA     #$00
-                STA     FDC_MOTOR       ; save current motor status
-                PLA
-                RTI
+                ;LDA     #$0C
+                ;STA     FDC_OPT_REG     ; all motors off
+                ;LDA     #$00
+                ;STA     FDC_MOTOR       ; save current motor status
+                ;PLA
+                ;RTI
 
 ; **** VPU IRQ Routine *********************************************************
 
@@ -4840,7 +4856,7 @@ NULL_DEV	DB	NULL_ID, $00     ; Null Device Driver Descriptor
 
 TTY_DEV		DB	TTY1_ID, $00     ; Terminal Driver Descriptor
 		DW	SERIALIN
-		DW	SERIALOUT
+		DW	TTY_OUT          ; redirected call to SERIALOUT
 		DW	TTY_CMD
 
 PPRINT_DEV	DB	PRINTER1_ID, $00 ; Parallel Printer Driver Descriptor
