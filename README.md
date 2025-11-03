@@ -43,3 +43,11 @@ There is a fork from [Emile](https://github.com/Emile666/JC2) which offers some 
 - Dietrich Lausberg ported his [CPM-65](https://github.com/Dietrich-L/CPM-65_for_JUNIOR_COMPUTER_II) to the Junior Computer][.
 
 - Marko Lauke's port of Pacman for the [Steckschwein](https://www.steckschwein.de/) (another great new 6502 computer) is still in progress, but already looks very promising.
+
+## Finishing
+
+I build a wooden (bottom) case for the JC2 in a late 70's style to include all the components. The top case has to wait... 
+
+Feel free to be inspired for building your own case.
+
+![JC2_Case](/Images/JC2_Case.jpg)
