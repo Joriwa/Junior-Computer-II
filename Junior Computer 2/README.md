@@ -23,6 +23,6 @@ Finally, you can make your own 3D printed cover for the 7 segment display using 
 
 The Junior Computer ][ was originally designed for the NMOS type 6502. All code used in the BIOS is written for this CPU type. However, you can also use the Rockwell 65C02 CMOS version to reduce power consumption. The R65C02 features some additional OP-Codes. Feel free to use them for your own programs, but note that other JC2 users will not be able to run your programs without upgrading to the 65C02. 
 
-The 6502 is still in production by Western Design Centre. They build the W65C02S CPU which is code, but not fully pin compatible to the original 6502. The W65C02S uses pin 1 as the Vector Pull output signal, whereas the 6502 uses the VSS pin, which is tied to Ground on the JC2. 
+The 6502 is still in production by Western Design Centre. They build the W65C02S CPU which is code, but not fully pin compatible to the original 6502. The W65C02S uses pin 1 as the Vector Pull output signal, whereas the 6502 uses this as the VSS pin, which is tied to Ground on the JC2. 
 
 To solve the problem, you can remove pin 1 on your IC socket or cut the trace on the component side of the PCB that connects pin 1 to ground.
