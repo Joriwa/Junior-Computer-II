@@ -18,3 +18,5 @@ To load and save programs and data from a via RS232 connected PC to the Junior C
 In order to use CRC checking in TeraTerm, you have to modify the TeraTerm.ini file as described in the TeraTerm README.
 
 Finally, you can make your own 3D printed cover for the 7 segment display using the JuniorLEDCover.stl file. 
+
+![JC2_Case](./Images/JC2_Case.jpg)
