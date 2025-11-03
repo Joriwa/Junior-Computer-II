@@ -2,7 +2,7 @@
 
 Junior Computer ][ Hardware and Software
 
-# Some History
+## Some History
 
 In May 1980 the dutch Elektor magazine (org. Elektuur) published the Junior Computer, developed by Alois (Loys) Nachtmann.
 The Junior was a little single board computer in the style of the MOS/Commodore KIM-1.
@@ -22,7 +22,7 @@ The Junior Computer ][ was born.
 
 ![Board Top](./Images/JC2_Top.jpg)
 
-# The Project
+## The Project
 
 For now the Junior Computer ][ has evolved various stages and some additional hardware is developed for it.
 
@@ -36,7 +36,7 @@ A retro style ASCII keyboard, specially developed for the Junior Computer, is al
 
 There is a fork from [Emile](https://github.com/Emile666/JC2) which offers some very interesting extra features.
 
-# Software
+## Software
 
 - M/OS 65, my little disk operating system for accessing files on SD-Card and floppy disks, is in a very early stage but already usable for loading files.
 
