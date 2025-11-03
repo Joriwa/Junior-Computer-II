@@ -25,4 +25,4 @@ The Junior Computer ][ was originally designed for the NMOS type 6502. All code 
 
 The 6502 is still in production by Western Design Centre. They build the W65C02S CPU which is code, but not fully pin compatible to the original 6502. The W65C02S uses pin 1 as the Vector Pull output signal, whereas the 6502 uses this as the VSS pin, which is tied to Ground on the JC2. 
 
-To solve the problem, you can remove pin 1 on your IC socket or cut the trace on the component side of the PCB that connects pin 1 to ground.
+*To solve the problem, you can remove pin 1 on your IC socket or cut the trace on the component side of the PCB that connects pin 1 to ground.*
