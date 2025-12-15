@@ -31,5 +31,5 @@ The 6502 is still in production by Western Design Centre. They build the W65C02S
 - The W65C02S also introduces a Bus Enable (BE) signal on pin 36. 
   **This signal (pin 36) must be pullded to high via a 3.3K Ohm resistor to +5V (VCC pin 8 of the CPU socket) to enable the address and data bus.**
 
-- The RDY (ready) signal on the W65C02S CPU is now bidirection to monitor the WAI opcode. For this, the RDY pin is not internally pulled high any longer.
+- The RDY (Ready) signal on the W65C02S CPU is now bidirectional to monitor the WAI opcode. For this, the RDY pin is not internally pulled high any longer.
   **This signal (pin 2) must also be pullded to high via a 3.3K Ohm resistor to +5V (VCC pin 8 of the CPU socket) to enable the CPU to run.** 
